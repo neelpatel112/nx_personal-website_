@@ -3,7 +3,21 @@ import styles from './Hero.module.scss';
 ---
 
 <section class={styles.hero} id="hero">
-  <!-- Noise + grid bg -->
+  <!-- Video background -->
+  <div class={styles.videoBg}>
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class={styles.video}
+    >
+      <source src="/55.mp4" type="video/mp4" />
+    </video>
+    <div class={styles.videoOverlay}></div>
+  </div>
+
+  <!-- Keep original bg elements as fallback -->
   <div class={styles.bg}>
     <div class={styles.gridLines}></div>
     <div class={styles.gradientOrb1}></div>
@@ -12,20 +26,17 @@ import styles from './Hero.module.scss';
 
   <div class={`container ${styles.content}`}>
     <div class={styles.left}>
-      <!-- Label -->
       <div class={`${styles.label} gsap-hidden`} data-gsap="fade-up" data-delay="0">
         <span class={styles.labelDot}></span>
         <span>Available for Internships</span>
       </div>
 
-      <!-- Name -->
       <h1 class={`${styles.name} gsap-hidden`} data-gsap="fade-up" data-delay="1">
         <span class={styles.nameFirst}>Patel</span>
         <br />
         <span class={styles.nameLast}>Neelkumar</span>
       </h1>
 
-      <!-- Tagline -->
       <p class={`${styles.tagline} gsap-hidden`} data-gsap="fade-up" data-delay="2">
         Frontend Dev. Systems Thinker.
         <br />
@@ -33,11 +44,10 @@ import styles from './Hero.module.scss';
         <span class={styles.cursor}>|</span>
       </p>
 
-      <!-- CTAs -->
       <div class={`${styles.ctas} gsap-hidden`} data-gsap="fade-up" data-delay="3">
         <a href="#projects" class={styles.btnPrimary}>View Projects</a>
         <a
-          href="https://github.com/PatelNeelkumar"
+          href="https://github.com/neelpatel112"
           target="_blank"
           rel="noopener noreferrer"
           class={styles.btnSecondary}
@@ -47,7 +57,6 @@ import styles from './Hero.module.scss';
       </div>
     </div>
 
-    <!-- Right: floating stat cards -->
     <div class={`${styles.right} gsap-hidden`} data-gsap="fade-left" data-delay="2">
       <div class={`${styles.floatCard} animate-float`}>
         <div class={styles.floatCardLabel}>Projects Live</div>
@@ -64,7 +73,6 @@ import styles from './Hero.module.scss';
     </div>
   </div>
 
-  <!-- Scroll indicator -->
   <div class={styles.scrollIndicator}>
     <span class={styles.scrollLine}></span>
     <span class={styles.scrollLabel}>scroll</span>
@@ -72,7 +80,6 @@ import styles from './Hero.module.scss';
 </section>
 
 <script>
-  // Typewriter effect
   const phrases = [
     'Browser OS Builder.',
     'ML Integrator.',
@@ -103,4 +110,4 @@ import styles from './Hero.module.scss';
     setTimeout(type, deleting ? 50 : 80);
   }
   type();
-</script>
+</script> 
