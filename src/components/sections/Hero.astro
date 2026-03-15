@@ -1,0 +1,106 @@
+---
+import styles from './Hero.module.scss';
+---
+
+<section class={styles.hero} id="hero">
+  <!-- Noise + grid bg -->
+  <div class={styles.bg}>
+    <div class={styles.gridLines}></div>
+    <div class={styles.gradientOrb1}></div>
+    <div class={styles.gradientOrb2}></div>
+  </div>
+
+  <div class={`container ${styles.content}`}>
+    <div class={styles.left}>
+      <!-- Label -->
+      <div class={`${styles.label} gsap-hidden`} data-gsap="fade-up" data-delay="0">
+        <span class={styles.labelDot}></span>
+        <span>Available for Internships</span>
+      </div>
+
+      <!-- Name -->
+      <h1 class={`${styles.name} gsap-hidden`} data-gsap="fade-up" data-delay="1">
+        <span class={styles.nameFirst}>Patel</span>
+        <br />
+        <span class={styles.nameLast}>Neelkumar</span>
+      </h1>
+
+      <!-- Tagline -->
+      <p class={`${styles.tagline} gsap-hidden`} data-gsap="fade-up" data-delay="2">
+        Frontend Dev. Systems Thinker.
+        <br />
+        <span class={styles.taglineAccent} id="typed-text"></span>
+        <span class={styles.cursor}>|</span>
+      </p>
+
+      <!-- CTAs -->
+      <div class={`${styles.ctas} gsap-hidden`} data-gsap="fade-up" data-delay="3">
+        <a href="#projects" class={styles.btnPrimary}>View Projects</a>
+        <a
+          href="https://github.com/PatelNeelkumar"
+          target="_blank"
+          rel="noopener noreferrer"
+          class={styles.btnSecondary}
+        >
+          GitHub ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: floating stat cards -->
+    <div class={`${styles.right} gsap-hidden`} data-gsap="fade-left" data-delay="2">
+      <div class={`${styles.floatCard} animate-float`}>
+        <div class={styles.floatCardLabel}>Projects Live</div>
+        <div class={styles.floatCardValue}>4</div>
+      </div>
+      <div class={`${styles.floatCard} ${styles.floatCardAlt} animate-float delay-3`}>
+        <div class={styles.floatCardLabel}>Hackathons Led</div>
+        <div class={styles.floatCardValue}>3×</div>
+      </div>
+      <div class={`${styles.floatCard} ${styles.floatCardSm} animate-float delay-6`}>
+        <div class={styles.floatCardLabel}>Certifications</div>
+        <div class={styles.floatCardValue}>3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class={styles.scrollIndicator}>
+    <span class={styles.scrollLine}></span>
+    <span class={styles.scrollLabel}>scroll</span>
+  </div>
+</section>
+
+<script>
+  // Typewriter effect
+  const phrases = [
+    'Browser OS Builder.',
+    'ML Integrator.',
+    'Open Source Contributor.',
+  ];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+  const el = document.getElementById('typed-text');
+
+  function type() {
+    if (!el) return;
+    const current = phrases[phraseIndex];
+    if (!deleting) {
+      el.textContent = current.slice(0, ++charIndex);
+      if (charIndex === current.length) {
+        deleting = true;
+        setTimeout(type, 1800);
+        return;
+      }
+    } else {
+      el.textContent = current.slice(0, --charIndex);
+      if (charIndex === 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+      }
+    }
+    setTimeout(type, deleting ? 50 : 80);
+  }
+  type();
+</script>

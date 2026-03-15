@@ -1,0 +1,18 @@
+---
+import styles from './Footer.module.scss';
+---
+
+<footer class={styles.footer}>
+  <div class={`container ${styles.inner}`}>
+    <span class={styles.left}>
+      <span class={styles.logo}>NP<span class={styles.dot}>.</span></span>
+      <span class={styles.copy}>© {new Date().getFullYear()} Patel Neelkumar</span>
+    </span>
+    <span class={styles.right}>
+      Built with
+      <span class={styles.tech}>Astro</span> ·
+      <span class={styles.tech}>TypeScript</span> ·
+      <span class={styles.tech}>SASS</span>
+    </span>
+  </div>
+</footer>

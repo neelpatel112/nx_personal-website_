@@ -1,0 +1,39 @@
+---
+import styles from './About.module.scss';
+import type { Stat } from '../../types/index';
+
+const stats: Stat[] = [
+  { value: '4',  label: 'Live Projects' },
+  { value: '3×', label: 'Hackathon Lead' },
+  { value: '3',  label: 'Certifications' },
+];
+---
+
+<div class={styles.about} id="about">
+  <span class={styles.label}>whoami</span>
+
+  <h2 class={styles.heading}>
+    Building the web,<br />
+    <span class={styles.accent}>one OS at a time.</span>
+  </h2>
+
+  <p class={styles.bio}>
+    Computer Engineering student at Parul University, Vadodara. I build
+    browser-based operating systems, ML-powered tools, and anything that
+    pushes what the web can do — all from scratch, no frameworks needed.
+  </p>
+
+  <div class={styles.stats}>
+    {stats.map((s) => (
+      <div class={styles.stat}>
+        <span class={styles.statValue}>{s.value}</span>
+        <span class={styles.statLabel}>{s.label}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class={styles.badge}>
+    <span class={styles.badgeDot}></span>
+    <span>Vadodara, India</span>
+  </div>
+</div>

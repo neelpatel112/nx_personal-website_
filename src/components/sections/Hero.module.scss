@@ -1,0 +1,264 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+// ── Background ──────────────────────────
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.gridLines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+}
+
+.gradientOrb1 {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  left: -100px;
+  background: radial-gradient(circle, rgba($accent-cyan, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+.gradientOrb2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  bottom: -100px;
+  right: -50px;
+  background: radial-gradient(circle, rgba($accent-violet, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+// ── Content ──────────────────────────────
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-12;
+  padding-block: $space-24;
+
+  @include lg {
+    gap: $space-16;
+  }
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+// ── Label ────────────────────────────────
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  letter-spacing: 0.08em;
+  color: $accent-cyan;
+  text-transform: uppercase;
+}
+
+.labelDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $accent-cyan;
+  animation: pulseDot 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+// ── Name ─────────────────────────────────
+.name {
+  font-family: $font-display;
+  font-size: clamp(4rem, 12vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+}
+
+.nameFirst {
+  color: $text-primary;
+}
+
+.nameLast {
+  @include gradient-text($accent-cyan, $accent-violet);
+}
+
+// ── Tagline ──────────────────────────────
+.tagline {
+  font-family: $font-body;
+  font-size: clamp($text-lg, 2.5vw, $text-2xl);
+  color: $text-secondary;
+  line-height: 1.5;
+}
+
+.taglineAccent {
+  color: $accent-cyan;
+}
+
+.cursor {
+  color: $accent-cyan;
+  animation: blink 1s step-end infinite;
+  font-weight: 100;
+}
+
+// ── CTAs ─────────────────────────────────
+.ctas {
+  display: flex;
+  gap: $space-4;
+  flex-wrap: wrap;
+  margin-top: $space-2;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-8;
+  background: $accent-cyan;
+  color: $bg-primary;
+  border-radius: 999px;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: box-shadow $transition-base, transform $transition-base;
+
+  &:hover {
+    box-shadow: 0 0 28px rgba($accent-cyan, 0.45);
+    transform: translateY(-2px);
+  }
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-8;
+  background: transparent;
+  color: $text-primary;
+  border-radius: 999px;
+  border: 1px solid $border-subtle;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: border-color $transition-base, color $transition-base, transform $transition-base;
+
+  &:hover {
+    border-color: $border-glow-cyan;
+    color: $accent-cyan;
+    transform: translateY(-2px);
+  }
+}
+
+// ── Right: Floating Cards ─────────────────
+.right {
+  display: none;
+  position: relative;
+  width: 280px;
+  height: 320px;
+  flex-shrink: 0;
+
+  @include lg {
+    display: block;
+  }
+}
+
+.floatCard {
+  @include bento-cell;
+  position: absolute;
+  padding: $space-6;
+  min-width: 140px;
+  top: 0;
+  right: 0;
+  animation: float 4s ease-in-out infinite;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.floatCardAlt {
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  border-color: $border-glow-violet;
+}
+
+.floatCardSm {
+  top: 50%;
+  right: -20px;
+  left: auto;
+  bottom: auto;
+  transform: translateY(-50%);
+  min-width: 110px;
+}
+
+.floatCardLabel {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: $text-muted;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: $space-2;
+}
+
+.floatCardValue {
+  font-family: $font-display;
+  font-size: $text-4xl;
+  color: $accent-cyan;
+  line-height: 1;
+}
+
+// ── Scroll Indicator ─────────────────────
+.scrollIndicator {
+  position: absolute;
+  bottom: $space-8;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, $accent-cyan, transparent);
+  animation: float 2s ease-in-out infinite;
+}
+
+.scrollLabel {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: $text-muted;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}

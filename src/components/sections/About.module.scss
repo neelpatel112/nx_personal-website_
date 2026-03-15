@@ -1,0 +1,90 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+.about {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.label {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $accent-cyan;
+
+  &::before {
+    content: '> ';
+    opacity: 0.5;
+  }
+}
+
+.heading {
+  font-family: $font-body;
+  font-size: clamp($text-xl, 2.5vw, $text-3xl);
+  font-weight: 800;
+  line-height: 1.2;
+  color: $text-primary;
+}
+
+.accent {
+  @include gradient-text;
+}
+
+.bio {
+  font-size: $text-sm;
+  color: $text-secondary;
+  line-height: 1.7;
+  flex: 1;
+}
+
+// ── Stats ─────────────────────────────────
+.stats {
+  display: flex;
+  gap: $space-6;
+  padding-block: $space-4;
+  border-top: 1px solid $border-subtle;
+  border-bottom: 1px solid $border-subtle;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.statValue {
+  font-family: $font-display;
+  font-size: $text-3xl;
+  color: $accent-cyan;
+  line-height: 1;
+}
+
+.statLabel {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: $text-muted;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+// ── Badge ─────────────────────────────────
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: $text-secondary;
+  letter-spacing: 0.04em;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $accent-cyan;
+  animation: pulseDot 2s ease-in-out infinite;
+  flex-shrink: 0;
+}

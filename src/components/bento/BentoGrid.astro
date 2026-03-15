@@ -1,0 +1,17 @@
+---
+import styles from './BentoGrid.module.scss';
+
+interface Props {
+  id?: string;
+}
+
+const { id } = Astro.props;
+---
+
+<section class={styles.section} id={id}>
+  <div class={`container`}>
+    <div class={styles.grid}>
+      <slot />
+    </div>
+  </div>
+</section>

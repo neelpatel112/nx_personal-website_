@@ -1,0 +1,18 @@
+---
+import styles from './BentoCell.module.scss';
+
+interface Props {
+  size?: 'square' | 'wide' | 'tall' | 'large';
+  accent?: 'cyan' | 'violet' | 'amber' | 'rose';
+  class?: string;
+}
+
+const { size = 'square', accent = 'cyan', class: className = '' } = Astro.props;
+---
+
+<div
+  class={`${styles.cell} ${styles[size]} ${styles[`accent-${accent}`]} gsap-hidden ${className}`}
+  data-gsap="fade-up"
+>
+  <slot />
+</div>

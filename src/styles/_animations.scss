@@ -1,0 +1,110 @@
+
+@use 'variables' as *;
+// ─────────────────────────────────────────
+// KEYFRAMES
+// ─────────────────────────────────────────
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 245, 212, 0.2); }
+  50%       { box-shadow: 0 0 24px rgba(0, 245, 212, 0.5); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes borderRotate {
+  from { --angle: 0deg; }
+  to   { --angle: 360deg; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+// ─────────────────────────────────────────
+// GSAP INITIAL STATES (pre-animation)
+// ─────────────────────────────────────────
+.gsap-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.gsap-hidden-left {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.gsap-hidden-scale {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+// ─────────────────────────────────────────
+// SKELETON SHIMMER
+// ─────────────────────────────────────────
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    $bg-cell 25%,
+    rgba(255,255,255,0.05) 50%,
+    $bg-cell 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 8px;
+}
+
+// ─────────────────────────────────────────
+// UTILITY ANIMATION CLASSES
+// ─────────────────────────────────────────
+.animate-fade-up {
+  animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+// Stagger delays
+@for $i from 1 through 10 {
+  .delay-#{$i} {
+    animation-delay: #{$i * 0.1}s;
+  }
+}

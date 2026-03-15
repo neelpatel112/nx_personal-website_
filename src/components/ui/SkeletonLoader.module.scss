@@ -1,0 +1,65 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+.skeleton {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.block {
+  background: linear-gradient(
+    90deg,
+    $bg-cell 25%,
+    rgba(255, 255, 255, 0.05) 50%,
+    $bg-cell 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 6px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-bottom: $space-2;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.date {
+  height: 12px;
+  width: 80px;
+  margin-left: auto;
+  border-radius: 4px;
+}
+
+.title {
+  height: 22px;
+  width: 70%;
+  border-radius: 6px;
+}
+
+.line {
+  height: 13px;
+  border-radius: 4px;
+}
+
+.footer {
+  display: flex;
+  gap: $space-2;
+  margin-top: auto;
+  padding-top: $space-3;
+}
+
+.pill {
+  height: 20px;
+  width: 60px;
+  border-radius: 999px;
+}

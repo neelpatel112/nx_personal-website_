@@ -1,0 +1,127 @@
+@use 'variables' as *;
+// ─────────────────────────────────────────
+// RESPONSIVE
+// ─────────────────────────────────────────
+@mixin sm {
+  @media (min-width: 640px) { @content; }
+}
+@mixin md {
+  @media (min-width: 768px) { @content; }
+}
+@mixin lg {
+  @media (min-width: 1024px) { @content; }
+}
+@mixin xl {
+  @media (min-width: 1280px) { @content; }
+}
+
+// ─────────────────────────────────────────
+// BENTO CELL BASE
+// ─────────────────────────────────────────
+@mixin bento-cell {
+  background: $bg-cell;
+  border: 1px solid $border-subtle;
+  border-radius: $cell-radius;
+  padding: $cell-padding;
+  position: relative;
+  overflow: hidden;
+  transition: border-color $transition-base, box-shadow $transition-base, transform $transition-base;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  &:hover {
+    border-color: $border-glow-cyan;
+    box-shadow: $glow-cyan;
+    transform: translateY(-2px);
+  }
+}
+
+// ─────────────────────────────────────────
+// GLASS EFFECT
+// ─────────────────────────────────────────
+@mixin glass {
+  background: rgba(13, 17, 23, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid $border-subtle;
+}
+
+// ─────────────────────────────────────────
+// GRADIENT TEXT
+// ─────────────────────────────────────────
+@mixin gradient-text($from: $accent-cyan, $to: $accent-violet) {
+  background: linear-gradient(135deg, $from 0%, $to 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ─────────────────────────────────────────
+// FLEX HELPERS
+// ─────────────────────────────────────────
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ─────────────────────────────────────────
+// PILL / BADGE
+// ─────────────────────────────────────────
+@mixin pill($color: $accent-cyan) {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-1 $space-3;
+  border-radius: 999px;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  font-weight: 500;
+  color: $color;
+  background: rgba($color, 0.1);
+  border: 1px solid rgba($color, 0.2);
+}
+
+// ─────────────────────────────────────────
+// NOISE TEXTURE OVERLAY
+// ─────────────────────────────────────────
+@mixin noise-overlay {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: 0.4;
+  }
+}
+
+// ─────────────────────────────────────────
+// TRUNCATE TEXT
+// ─────────────────────────────────────────
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

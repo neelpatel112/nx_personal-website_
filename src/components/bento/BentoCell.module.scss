@@ -1,0 +1,51 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.cell {
+  @include bento-cell;
+  @include noise-overlay;
+
+  &.square {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  &.wide {
+    grid-column: span 1;
+    grid-row: span 1;
+
+    @include md { grid-column: span 2; }
+  }
+
+  &.tall {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  &.large {
+    grid-column: span 1;
+    grid-row: span 2;
+
+    @include md { grid-column: span 2; }
+  }
+
+  &.accent-cyan:hover {
+    border-color: $border-glow-cyan;
+    box-shadow: $glow-cyan;
+  }
+
+  &.accent-violet:hover {
+    border-color: $border-glow-violet;
+    box-shadow: $glow-violet;
+  }
+
+  &.accent-amber:hover {
+    border-color: rgba($accent-amber, 0.3);
+    box-shadow: 0 0 24px rgba($accent-amber, 0.12);
+  }
+
+  &.accent-rose:hover {
+    border-color: rgba($accent-rose, 0.3);
+    box-shadow: 0 0 24px rgba($accent-rose, 0.12);
+  }
+}

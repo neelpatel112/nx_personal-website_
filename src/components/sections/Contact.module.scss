@@ -1,0 +1,83 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+.contact {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  justify-content: center;
+}
+
+.label {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $accent-rose;
+
+  &::before {
+    content: '> ';
+    opacity: 0.4;
+  }
+}
+
+.heading {
+  font-family: $font-display;
+  font-size: clamp($text-3xl, 5vw, $text-5xl);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: $text-primary;
+}
+
+.accent {
+  @include gradient-text($accent-violet, $accent-rose);
+}
+
+.sub {
+  font-size: $text-sm;
+  color: $text-secondary;
+  line-height: 1.6;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  margin-top: $space-2;
+}
+
+.emailLink {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  color: $accent-cyan;
+  text-decoration: none;
+  transition: opacity $transition-fast;
+  word-break: break-all;
+
+  &:hover { opacity: 0.7; }
+}
+
+.emailIcon {
+  font-size: $text-base;
+  flex-shrink: 0;
+}
+
+.socials {
+  display: flex;
+  gap: $space-3;
+  flex-wrap: wrap;
+}
+
+.socialBtn {
+  @include pill($accent-violet);
+  text-decoration: none;
+  transition: background $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    background: rgba($accent-violet, 0.2);
+    box-shadow: 0 0 12px rgba($accent-violet, 0.2);
+  }
+}

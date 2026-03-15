@@ -1,0 +1,30 @@
+---
+import styles from './Certifications.module.scss';
+import { certifications } from '../../data/certifications';
+
+const colorMap: Record<string, string> = {
+  cyan:   '#00f5d4',
+  violet: '#7c3aed',
+  amber:  '#f59e0b',
+};
+---
+
+<div class={styles.certs}>
+  <span class={styles.label}>certifications</span>
+  <h3 class={styles.heading}>Cisco Certified</h3>
+
+  <div class={styles.list}>
+    {certifications.map((cert) => (
+      <div
+        class={styles.cert}
+        style={`--cert-color: ${colorMap[cert.color]}`}
+      >
+        <div class={styles.certTop}>
+          <span class={styles.certTitle}>{cert.title}</span>
+          <span class={styles.certDate}>{cert.date}</span>
+        </div>
+        <span class={styles.certIssuer}>{cert.issuer}</span>
+      </div>
+    ))}
+  </div>
+</div>

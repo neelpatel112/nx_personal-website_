@@ -1,0 +1,78 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+.skills {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.label {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $accent-violet;
+
+  &::before {
+    content: '$ ';
+    opacity: 0.4;
+  }
+}
+
+.heading {
+  font-family: $font-body;
+  font-size: $text-xl;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: $space-2;
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  flex: 1;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-thumb { background: $border-subtle; border-radius: 999px; }
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.catLabel {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.pill {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: var(--cat-color, #{$accent-cyan});
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: $space-1 $space-3;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background $transition-fast, border-color $transition-fast;
+  cursor: default;
+
+  &:hover {
+    background: rgba(var(--cat-color, #{$accent-cyan}), 0.1);
+    border-color: rgba(var(--cat-color, #{$accent-cyan}), 0.3);
+  }
+}

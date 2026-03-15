@@ -1,0 +1,132 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  position: relative;
+  cursor: default;
+}
+
+// ── Top Bar (window chrome) ───────────────
+.topBar {
+  @include flex-between;
+  gap: $space-3;
+}
+
+.windowDots {
+  display: flex;
+  gap: $space-2;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dateRange {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: $text-muted;
+  flex: 1;
+  text-align: right;
+}
+
+.statusBadge {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  letter-spacing: 0.05em;
+  padding: 2px $space-2;
+  border-radius: 999px;
+
+  &[data-status='in-progress'] {
+    color: $accent-cyan;
+    background: rgba($accent-cyan, 0.1);
+  }
+
+  &[data-status='completed'] {
+    color: #22c55e;
+    background: rgba(#22c55e, 0.1);
+  }
+}
+
+// ── Body ─────────────────────────────────
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.title {
+  font-family: $font-body;
+  font-size: $text-xl;
+  font-weight: 700;
+  color: $text-primary;
+  line-height: 1.2;
+}
+
+.desc {
+  font-size: $text-sm;
+  color: $text-secondary;
+  line-height: 1.65;
+  @include truncate(4);
+}
+
+// ── Tech Stack ───────────────────────────
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.pill {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: var(--accent, #{$accent-cyan});
+  background: rgba(var(--accent, #{$accent-cyan}), 0.08);
+  border: 1px solid rgba(var(--accent, #{$accent-cyan}), 0.2);
+  padding: 2px $space-2;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+// ── Footer ───────────────────────────────
+.footer {
+  display: flex;
+  gap: $space-4;
+  padding-top: $space-3;
+  border-top: 1px solid $border-subtle;
+  margin-top: auto;
+}
+
+.link {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: var(--accent, #{$accent-cyan});
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: opacity $transition-fast;
+
+  &:hover { opacity: 0.7; }
+}
+
+.linkMuted {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: $text-muted;
+}
+
+// ── Glow Border Overlay ───────────────────
+.glowBorder {
+  position: absolute;
+  inset: -1px;
+  border-radius: $cell-radius;
+  border: 1px solid var(--accent, #{$accent-cyan});
+  pointer-events: none;
+  box-shadow: 0 0 20px rgba(var(--accent, #{$accent-cyan}), 0.15);
+}

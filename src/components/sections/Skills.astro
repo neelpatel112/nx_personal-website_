@@ -1,0 +1,39 @@
+---
+import styles from './Skills.module.scss';
+import { skills, categoryColors } from '../../data/skills';
+import type { SkillCategory } from '../../types/index';
+
+const categories = [...new Set(skills.map((s) => s.category))] as SkillCategory[];
+---
+
+<div class={styles.skills}>
+  <span class={styles.label}>skills.list()</span>
+  <h3 class={styles.heading}>Tech Stack</h3>
+
+  <div class={styles.groups}>
+    {categories.map((cat) => (
+      <div class={styles.group}>
+        <span
+          class={styles.catLabel}
+          style={`color: ${categoryColors[cat]}`}
+        >
+          {cat}
+        </span>
+        <div class={styles.pills}>
+          {skills
+            .filter((s) => s.category === cat)
+            .map((s, i) => (
+              <span
+                class={`${styles.pill} gsap-hidden`}
+                data-gsap="fade-up"
+                data-delay={String(i)}
+                style={`--cat-color: ${categoryColors[cat]}`}
+              >
+                {s.name}
+              </span>
+            ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
