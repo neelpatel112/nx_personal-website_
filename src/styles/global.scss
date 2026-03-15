@@ -74,3 +74,8 @@ section {
   padding-block: 4rem;
   @media (min-width: 1024px) { padding-block: 6rem; }
 }
+/* Fallback — show all hidden elements if GSAP fails */
+.gsap-hidden {
+  opacity: 1 !important;
+  transform: none !important;
+}
